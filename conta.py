@@ -7,29 +7,40 @@ class Conta:
         self.__saldo = saldo
         self.__limite = limite
 
-#---------Getters e Setters-------------------------------------------
-    def get_numero(self):
+#---------Getters e Setters como propriedades----------------------------
+    @property
+    def numero(self):
         return self.__numero
-    def get_nome(self):
+
+    @property
+    def nome(self):
         return self.__nome
-    def get_saldo(self):
+
+    @property
+    def saldo(self):
         return self.__saldo
-    def get_limite(self):
+
+    @property
+    def limite(self):
         return self.__limite
-    def set_saldo(self,saldo):
+
+    @saldo.setter
+    def saldo(self,saldo):
         self.__saldo = saldo
-    def set_limite(self,limite):
+
+    @limite.setter
+    def limite(self,limite):
         self.__limite = limite
 #----------------------------------------------------------------------
 
     def extrato(self):
-        print(f"Olá {self.get_nome()}! O saldo da sua conta é {self.get_saldo()}")
+        print(f"Olá {self.nome}! O saldo da sua conta é {self.saldo}")
 
     def depositar(self, valor):
-        self.set_saldo(self.get_saldo() + valor)
+        self.saldo += valor
 
     def sacar(self, valor):
-        self.set_saldo(self.get_saldo() - valor)
+        self.saldo -= valor
 
     def transferir(self,valor,destino):
         self.sacar(valor)
