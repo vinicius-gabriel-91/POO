@@ -39,8 +39,15 @@ class Conta:
     def depositar(self, valor):
         self.saldo += valor
 
+    def __verificar_saque(self,valor):
+        saque_autorizado = valor <= self.saldo + self.limite
+        return saque_autorizado
+
     def sacar(self, valor):
-        self.saldo -= valor
+        if (self.__verificar_saque(valor)):
+            self.saldo -= valor
+        else:
+            print(f"Saque negado! O valor disponivel para saque é de {self.saldo + self.limite}")
 
     def transferir(self,valor,destino):
         self.sacar(valor)
